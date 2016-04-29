@@ -9,17 +9,20 @@ package com.company;
         int i = 0;
         int currentCellNum = 0;
 
+        int[][] emptyCells = grid.emptyCellsList;
+        int[][] fields = grid.fields;
+
         while (i < grid .nEmptyCells) {
-            currentCellNum = grid.fields[grid.emptyCellsList[i][0]][grid.emptyCellsList[i][1]];
+            currentCellNum = fields[emptyCells[i][0]][emptyCells[i][1]];
             if (currentCellNum != 9) {
                 currentCellNum++;
-                grid.fields[grid.emptyCellsList[i][0]][grid.emptyCellsList[i][1]] = currentCellNum;
-                if (isConsistent(grid.fields, grid.emptyCellsList[i][0], grid.emptyCellsList[i][1])) {
+                fields[emptyCells[i][0]][emptyCells[i][1]] = currentCellNum;
+                if (isConsistent(fields, emptyCells[i][0], emptyCells[i][1])) {
                     i++;
                 }
             } else {
                 currentCellNum = 0;
-                grid.fields[grid.emptyCellsList[i][0]][grid.emptyCellsList[i][1]] = currentCellNum;
+                fields[emptyCells[i][0]][emptyCells[i][1]] = currentCellNum;
                 i--;
                 if (i < 0) {
                     return false;
